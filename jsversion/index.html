@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Job Impact Explorer — D3 Edition</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page__header">
+        <div class="heading">
+          <h1>AI Job Impact Explorer</h1>
+          <p>
+            How do industries shift as AI adoption accelerates? Explore the
+            relationship between AI impact intensity and projected job change.
+          </p>
+        </div>
+
+        <section class="controls">
+          <div class="control-group">
+            <label for="trend-filter">Highlight trend</label>
+            <select id="trend-filter">
+              <option value="all" selected>All industries</option>
+              <option value="Job Creation">Job creation</option>
+              <option value="Job Loss">Job loss</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="impact-filter">AI impact level</label>
+            <div id="impact-filter" class="pill-toggle" role="group">
+              <button data-impact="all" class="pill-toggle__btn is-active">
+                All
+              </button>
+              <button data-impact="Low" class="pill-toggle__btn">Low</button>
+              <button data-impact="Moderate" class="pill-toggle__btn">
+                Moderate
+              </button>
+              <button data-impact="High" class="pill-toggle__btn">High</button>
+            </div>
+          </div>
+        </section>
+      </header>
+
+      <section class="viz-container">
+        <div class="viz">
+          <svg id="viz"></svg>
+          <div class="viz__legend" aria-hidden="true">
+            <div class="legend-color">
+              <div class="legend-color__item">
+                <span class="legend-color__swatch legend-color__swatch--creation"></span>
+                <span>Job creation</span>
+              </div>
+              <div class="legend-color__item">
+                <span class="legend-color__swatch legend-color__swatch--loss"></span>
+                <span>Job loss</span>
+              </div>
+            </div>
+          </div>
+          <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="details">
+        <div class="details__header">
+          <h2>Job Titles in Selected Industry</h2>
+          <p id="details-count">Click a bubble to view job titles.</p>
+        </div>
+        <div id="job-list" class="details__list" role="list"></div>
+      </section>
+
+      <footer class="page__footer">
+        <p>
+          Data source: AI Job Trends Dataset (Projected openings 2030 vs. Job openings 2024).
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" referrerpolicy="no-referrer"></script>
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>
+
